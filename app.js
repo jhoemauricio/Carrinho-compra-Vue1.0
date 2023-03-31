@@ -1,4 +1,4 @@
-const app = {
+const myApp = {
 
     data() {
         return {
@@ -82,4 +82,8 @@ const app = {
     },
 }
 
-Vue.createApp(app).mount('#app');
+const app = Vue.createApp(myApp)
+
+app.component('product-detail', productDetail)
+app.mount('#app');
+
