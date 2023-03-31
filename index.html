@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carrinho de compras</title>
+</head>
+
+<body>
+
+    <div id="app">
+        <div :style="styles">
+            <label for="themeBlack">
+                <input type="checkbox" :checked="themeBlack" @click="toogleTheme()" name="themeBlack" id=""> Tema Escuro
+            </label>
+            <h1>Carrinho de Compras com Vue</h1>
+            <p>{{ fullName }}</p>
+
+            <!-- 
+            <img v-bind:src="product.image" v-bind:alt="product.title" style="max-width: 100px;">
+            <strong v-if="product.stars  > 0">{{ product.stars }}</strong>
+            <img :src="product2.image" :alt="product2.title" style="max-width: 100px;">
+            <strong v-show="product2.stars > 0">{{ product2.stars }}</strong>
+       
+        -->
+
+            <hr>
+            <h3>Carrinho ({{ cart.length }})</h3>
+
+            <ul>
+                <li v-for="(product, index) in products" :key="index">
+                    <p>{{product.title}}</p>
+                    <img :src="product.image" :alt="product.title" style="max-width: 100px;">
+                    <strong v-if="product.stars > 0">{{ product.stars}}</strong>
+                    <!--se produto estiver no carrinho a opção remover carrinho fica disponível-->
+                    <a href="#" v-on:click.prevent="removeCart(product)" v-if="inCart(product)">
+                        REMOVE CART</a>
+
+                    <a href="#" v-on:click.prevent="addCart(product)" v-else>
+                        ADD CART</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script src="./app.js"></script>
+
+</body>
+
+</html>
