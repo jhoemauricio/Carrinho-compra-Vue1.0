@@ -32,12 +32,10 @@
 
             <ul>
                 <li v-for="(product, index) in products" :key="index">
-                    
 
-                <product-detail
-                    :product="product"
-                    :product-in-cart="inCart(cart)">
-                </product-detail>
+
+                    <product-detail :product="product" :product-in-cart="inCart(product)" @add-prod-cart="addCart">
+                    </product-detail>
 
                     <!--se produto estiver no carrinho a opção remover carrinho fica disponível-->
                     <!-- <a href="#" v-on:click.prevent="removeCart(product)" v-if="inCart(product)">
@@ -48,18 +46,22 @@
                     :disabled="inCart(product)"
                     :class="['color',{'button-disabled' : inCart(product)}]"> ADD CART</button>
                      -->
-                    
+
                     <!-- <a href="#" v-on:click.prevent="addCart(product)" v-else>
                         ADD CART</a> -->
                 </li>
             </ul>
-   
+
+            <hr>
+            <example-form></example-form>
+
         </div>
     </div>
 
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
     <script src="./app.js"></script>
     <script src="./components/ProductDetail.js"></script>
+    <script src="./components/ExampleForms.js"></script>
     <script>
         app.mount('#app')
     </script>

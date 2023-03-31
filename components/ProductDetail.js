@@ -14,19 +14,22 @@ const productDetail = {
     
     `,
 
+    emits: [
+        'add-prod-cart'
+    ],
     // props:['product','productInCart'],
     props: {
         product: {
             type: Object,
             required: true,
-       
+
         },
         productInCart: {
-            type: Boolean ,
+            type: Boolean,
             required: true,
-       
+
         }
-        
+
     },
 
     data() {
@@ -35,12 +38,13 @@ const productDetail = {
         }
     },
     methods: {
-        addCart(product){
+        addCart(product) {
 
             console.log('Add Cart in COmponnte');
+            this.$emit('add-prod-cart', product)
 
         },
     }
 }
 
-app.component('product-detail',productDetail)
+app.component('product-detail', productDetail)
